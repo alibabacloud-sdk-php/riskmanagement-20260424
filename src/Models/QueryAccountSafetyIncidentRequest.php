@@ -9,6 +9,11 @@ use AlibabaCloud\Dara\Model;
 class QueryAccountSafetyIncidentRequest extends Model
 {
     /**
+     * @var string[]
+     */
+    public $actionCodes;
+
+    /**
      * @var string
      */
     public $aliyunLang;
@@ -19,6 +24,11 @@ class QueryAccountSafetyIncidentRequest extends Model
     public $caseCode;
 
     /**
+     * @var string[]
+     */
+    public $caseCodes;
+
+    /**
      * @var string
      */
     public $current;
@@ -27,6 +37,11 @@ class QueryAccountSafetyIncidentRequest extends Model
      * @var string
      */
     public $eventId;
+
+    /**
+     * @var string[]
+     */
+    public $eventIds;
 
     /**
      * @var string
@@ -52,26 +67,58 @@ class QueryAccountSafetyIncidentRequest extends Model
      * @var string
      */
     public $status;
+
+    /**
+     * @var string[]
+     */
+    public $statuses;
     protected $_name = [
+        'actionCodes' => 'ActionCodes',
         'aliyunLang' => 'AliyunLang',
         'caseCode' => 'CaseCode',
+        'caseCodes' => 'CaseCodes',
         'current' => 'Current',
         'eventId' => 'EventId',
+        'eventIds' => 'EventIds',
         'pageSize' => 'PageSize',
         'punishEndTime' => 'PunishEndTime',
         'punishStartTime' => 'PunishStartTime',
         'resourceId' => 'ResourceId',
         'status' => 'Status',
+        'statuses' => 'Statuses',
     ];
 
     public function validate()
     {
+        if (\is_array($this->actionCodes)) {
+            Model::validateArray($this->actionCodes);
+        }
+        if (\is_array($this->caseCodes)) {
+            Model::validateArray($this->caseCodes);
+        }
+        if (\is_array($this->eventIds)) {
+            Model::validateArray($this->eventIds);
+        }
+        if (\is_array($this->statuses)) {
+            Model::validateArray($this->statuses);
+        }
         parent::validate();
     }
 
     public function toArray($noStream = false)
     {
         $res = [];
+        if (null !== $this->actionCodes) {
+            if (\is_array($this->actionCodes)) {
+                $res['ActionCodes'] = [];
+                $n1 = 0;
+                foreach ($this->actionCodes as $item1) {
+                    $res['ActionCodes'][$n1] = $item1;
+                    ++$n1;
+                }
+            }
+        }
+
         if (null !== $this->aliyunLang) {
             $res['AliyunLang'] = $this->aliyunLang;
         }
@@ -80,12 +127,34 @@ class QueryAccountSafetyIncidentRequest extends Model
             $res['CaseCode'] = $this->caseCode;
         }
 
+        if (null !== $this->caseCodes) {
+            if (\is_array($this->caseCodes)) {
+                $res['CaseCodes'] = [];
+                $n1 = 0;
+                foreach ($this->caseCodes as $item1) {
+                    $res['CaseCodes'][$n1] = $item1;
+                    ++$n1;
+                }
+            }
+        }
+
         if (null !== $this->current) {
             $res['Current'] = $this->current;
         }
 
         if (null !== $this->eventId) {
             $res['EventId'] = $this->eventId;
+        }
+
+        if (null !== $this->eventIds) {
+            if (\is_array($this->eventIds)) {
+                $res['EventIds'] = [];
+                $n1 = 0;
+                foreach ($this->eventIds as $item1) {
+                    $res['EventIds'][$n1] = $item1;
+                    ++$n1;
+                }
+            }
         }
 
         if (null !== $this->pageSize) {
@@ -108,6 +177,17 @@ class QueryAccountSafetyIncidentRequest extends Model
             $res['Status'] = $this->status;
         }
 
+        if (null !== $this->statuses) {
+            if (\is_array($this->statuses)) {
+                $res['Statuses'] = [];
+                $n1 = 0;
+                foreach ($this->statuses as $item1) {
+                    $res['Statuses'][$n1] = $item1;
+                    ++$n1;
+                }
+            }
+        }
+
         return $res;
     }
 
@@ -119,6 +199,17 @@ class QueryAccountSafetyIncidentRequest extends Model
     public static function fromMap($map = [])
     {
         $model = new self();
+        if (isset($map['ActionCodes'])) {
+            if (!empty($map['ActionCodes'])) {
+                $model->actionCodes = [];
+                $n1 = 0;
+                foreach ($map['ActionCodes'] as $item1) {
+                    $model->actionCodes[$n1] = $item1;
+                    ++$n1;
+                }
+            }
+        }
+
         if (isset($map['AliyunLang'])) {
             $model->aliyunLang = $map['AliyunLang'];
         }
@@ -127,12 +218,34 @@ class QueryAccountSafetyIncidentRequest extends Model
             $model->caseCode = $map['CaseCode'];
         }
 
+        if (isset($map['CaseCodes'])) {
+            if (!empty($map['CaseCodes'])) {
+                $model->caseCodes = [];
+                $n1 = 0;
+                foreach ($map['CaseCodes'] as $item1) {
+                    $model->caseCodes[$n1] = $item1;
+                    ++$n1;
+                }
+            }
+        }
+
         if (isset($map['Current'])) {
             $model->current = $map['Current'];
         }
 
         if (isset($map['EventId'])) {
             $model->eventId = $map['EventId'];
+        }
+
+        if (isset($map['EventIds'])) {
+            if (!empty($map['EventIds'])) {
+                $model->eventIds = [];
+                $n1 = 0;
+                foreach ($map['EventIds'] as $item1) {
+                    $model->eventIds[$n1] = $item1;
+                    ++$n1;
+                }
+            }
         }
 
         if (isset($map['PageSize'])) {
@@ -153,6 +266,17 @@ class QueryAccountSafetyIncidentRequest extends Model
 
         if (isset($map['Status'])) {
             $model->status = $map['Status'];
+        }
+
+        if (isset($map['Statuses'])) {
+            if (!empty($map['Statuses'])) {
+                $model->statuses = [];
+                $n1 = 0;
+                foreach ($map['Statuses'] as $item1) {
+                    $model->statuses[$n1] = $item1;
+                    ++$n1;
+                }
+            }
         }
 
         return $model;
